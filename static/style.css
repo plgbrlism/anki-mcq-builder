@@ -1,0 +1,340 @@
+/* =========================================================
+   :host RESET — first rule, eradicates all inherited styles
+   ========================================================= */
+:host {
+  all: initial !important;
+  display: block !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "Google Sans", sans-serif;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+}
+
+/* =========================================================
+   SCROLLBAR PURGE
+   ========================================================= */
+:host ::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+:host * {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+/* =========================================================
+   GESTURE / HIGHLIGHT NEUTRALIZATION
+   ========================================================= */
+:host {
+  overscroll-behavior: none !important;
+}
+:host * {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none !important;
+  -webkit-user-drag: none !important;
+  user-select: none;
+}
+
+/* =========================================================
+   NATIVE WIDGET DEMOLITION
+   ========================================================= */
+:host button,
+:host input,
+:host optgroup,
+:host select,
+:host textarea {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  background-image: none !important;
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  color: inherit !important;
+}
+
+:host button {
+  cursor: pointer;
+}
+
+/* =========================================================
+   LAYOUT
+   ========================================================= */
+:host .m3-mcq-wrapper {
+  width: 100%;
+  max-width: 580px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 auto;
+  padding: 16px;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   CHECK BANNER (back side)
+   ========================================================= */
+:host .m3-check-banner {
+  display: none;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  text-align: center;
+  padding: 10px 16px;
+  border-radius: 16px 4px 16px 4px;
+  background-clip: padding-box !important;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+:host .m3-check-banner.visible {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+:host .m3-check-banner.correct {
+  background-color: var(--m3-primary-container);
+  color: var(--m3-on-primary-container);
+  border: 2px solid var(--m3-primary);
+}
+
+:host .m3-check-banner.wrong {
+  background-color: var(--m3-error-container);
+  color: var(--m3-on-error-container);
+  border: 2px solid var(--m3-error);
+}
+
+/* =========================================================
+   QUESTION SECTION
+   ========================================================= */
+:host .m3-question-card {
+  background-color: var(--m3-surface-container-high);
+  color: var(--m3-on-surface);
+  padding: 24px 20px;
+  border-radius: 28px 8px 28px 8px;
+  background-clip: padding-box !important;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  border: 2px solid var(--m3-outline-variant);
+}
+
+:host .m3-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--m3-primary);
+  margin-bottom: 8px;
+}
+
+:host .m3-question-text {
+  font-size: 1.15rem;
+  line-height: 1.45;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* =========================================================
+   OPTIONS CONTAINER
+   ========================================================= */
+:host .m3-options-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* =========================================================
+   CHOICE CARD
+   ========================================================= */
+:host .m3-option-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 16px 20px;
+  background-color: var(--m3-surface-container-low);
+  border: 1px solid var(--m3-outline-variant);
+  border-radius: 20px 4px 20px 4px;
+  background-clip: padding-box !important;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  color: var(--m3-on-surface);
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Leading Indicator Pill (A, B, C, D) */
+:host .m3-option-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 16px 8px 16px 8px;
+  background-clip: padding-box !important;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  background-color: var(--m3-surface-container-highest);
+  color: var(--m3-on-surface-variant);
+  font-size: 0.85rem;
+  font-weight: 600;
+  flex-shrink: 0;
+  transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+:host .m3-option-content {
+  flex-grow: 1;
+  line-height: 1.4;
+}
+
+/* =========================================================
+   INTERACTIVE STATES
+   ========================================================= */
+:host .m3-option-item:hover {
+  background-color: var(--m3-surface-container-highest);
+  border-color: var(--m3-outline);
+}
+
+:host .m3-option-item:focus-visible {
+  border-color: var(--m3-primary);
+  box-shadow: 0 0 0 2px var(--m3-primary);
+}
+
+:host .m3-option-item:not(:disabled):active {
+  transform: scale(0.98) translateZ(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host * {
+    transition: none !important;
+  }
+}
+
+/* =========================================================
+   FRONT SELECTED STATE
+   ========================================================= */
+:host .m3-option-item.selected {
+  background-color: var(--m3-primary-container);
+  color: var(--m3-on-primary-container);
+  border-color: var(--m3-primary);
+  font-weight: 500;
+}
+
+:host .m3-option-item.selected .m3-option-pill {
+  background-color: var(--m3-primary);
+  color: var(--m3-on-primary);
+}
+
+/* =========================================================
+   BACK TEMPLATE STATES
+   ========================================================= */
+:host .m3-option-item.state-correct {
+  background-color: var(--m3-primary-container) !important;
+  color: var(--m3-on-primary-container) !important;
+  border-color: var(--m3-primary) !important;
+  font-weight: 600;
+}
+
+:host .m3-option-item.state-correct .m3-option-pill {
+  background-color: var(--m3-primary) !important;
+  color: var(--m3-on-primary) !important;
+}
+
+:host .m3-option-item.state-wrong {
+  background-color: var(--m3-error-container) !important;
+  color: var(--m3-on-error-container) !important;
+  border-color: var(--m3-error) !important;
+}
+
+:host .m3-option-item.state-wrong .m3-option-pill {
+  background-color: var(--m3-error) !important;
+  color: var(--m3-on-error) !important;
+}
+
+:host .m3-option-item.state-missed {
+  background-color: var(--m3-surface-container) !important;
+  color: var(--m3-on-surface) !important;
+  border-color: var(--m3-tertiary) !important;
+}
+
+:host .m3-option-item.state-missed .m3-option-pill {
+  background-color: var(--m3-surface-container) !important;
+  color: var(--m3-on-surface) !important;
+}
+
+/* =========================================================
+   EXPLANATION (back side)
+   ========================================================= */
+:host .m3-explanation {
+  background-color: var(--m3-surface-container-high);
+  border-left: 5px solid var(--m3-tertiary);
+  border-radius: 8px 20px 20px 8px;
+  background-clip: padding-box !important;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  padding: 18px 20px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--m3-on-surface-variant);
+}
+
+:host .m3-explanation:empty {
+  display: none;
+}
+
+/* =========================================================
+   SHOW ANSWER BUTTON (front side)
+   ========================================================= */
+:host .m3-show-answer {
+  display: none;
+  width: 100%;
+  padding: 14px 20px;
+  background-color: var(--m3-primary);
+  color: var(--m3-on-primary);
+  border-radius: 20px 4px 20px 4px;
+  background-clip: padding-box !important;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+:host .m3-show-answer.visible {
+  display: block;
+}
+
+:host .m3-show-answer:hover {
+  background-color: var(--m3-inverse-primary);
+}
+
+:host .m3-show-answer:active {
+  transform: scale(0.98) translateZ(0);
+}

@@ -1,0 +1,151 @@
+# MCQ JSON Schema
+
+This document describes the JSON format for generating Anki MCQ decks.
+
+## Structure
+
+```json
+[
+  {
+    "id": 1,
+    "question": "The question text",
+    "choices": ["Option A", "Option B", "Option C", "Option D"],
+    "answer": "Option A",
+    "extra": "Optional explanation shown on the back of the card."
+  }
+]
+```
+
+## Fields
+
+| Field | Required | Type | Description |
+|-------|----------|------|-------------|
+| `id` | Yes | integer | Unique identifier for the question |
+| `question` | Yes | string | The question text shown on the front |
+| `choices` | Yes | array of strings | 4-6 answer options |
+| `answer` | Yes | string | Must exactly match one of the choices |
+| `extra` | No | string | Optional explanation shown on the back. Supports HTML (`<b>`, `<i>`, `<u>`) |
+
+## Rules
+
+- **`answer` must match exactly** — including capitalization, punctuation, and whitespace. `"Ada Lovelace"` ≠ `"ada lovelace"`.
+- **4-6 choices** is recommended. Fewer feels too easy; more becomes overwhelming.
+- **`extra` is optional** — if omitted, the explanation section is hidden on the back.
+- **`<br>` is used as the separator** — the builder converts the `choices` array to `<br>`-separated HTML for the Anki field.
+
+## Example with extra
+
+```json
+{
+  "id": 1,
+  "question": "Which individual is credited with inventing the first machine algorithm in 1843?",
+  "choices": [
+    "Grace Murray Hopper",
+    "Ada Lovelace",
+    "Kathleen Booth",
+    "Niklaus Wirth"
+  ],
+  "answer": "Ada Lovelace",
+  "extra": "Ada Lovelace wrote the first algorithm intended to be processed by a machine, as part of her work on Charles Babbage's Analytical Engine."
+}
+```
+
+## Example without extra
+
+```json
+{
+  "id": 2,
+  "question": "What was the first high-level computer programming language ever developed?",
+  "choices": [
+    "Fortran",
+    "LISP",
+    "Plankalkul",
+    "Shortcode"
+  ],
+  "answer": "Plankalkul"
+}
+```
+
+---
+
+## LLM Prompt Template
+
+Use this prompt to generate MCQ JSON from your notes or textbook content:
+
+```
+You are an MCQ question generator. Convert the provided text into multiple-choice questions in JSON format.
+
+OUTPUT FORMAT — strict JSON array, no markdown, no commentary:
+[
+  {
+    "id": 1,
+    "question": "...",
+    "choices": ["...", "...", "...", "..."],
+    "answer": "...",
+    "extra": "..."
+  }
+]
+
+RULES:
+
+1. QUESTION COUNT:
+   - For short texts (< 2000 words): generate 10-15 questions
+   - For medium texts (2000-10000 words): generate 20-40 questions
+   - For long texts (> 10000 words): generate 40-60 questions
+
+2. QUESTION QUALITY:
+   - Avoid "According to the text" or "The text states"
+   - Avoid ambiguous pronouns ("this", "that", "it")
+   - Do not start questions with "What", "Which", "Where", "How", "Why" — use statement format
+   - Questions must be self-contained and testable without the source text
+   - Prefer specific details over general facts
+
+3. CHOICES:
+   - Always provide exactly 4 options unless the topic demands more
+   - Distractors must be contextually relevant (same category as correct answer)
+   - All options should be similar in length and grammatical structure
+   - Avoid obvious wrong answers
+
+4. ANSWER:
+   - Must exactly match one of the choices (same spelling, capitalization, punctuation)
+
+5. EXTRA (optional):
+   - Provide a brief explanation of why the answer is correct
+   - Add relevant context or mnemonic if helpful
+   - Use HTML tags for emphasis: <b>bold</b>, <i>italic</i>, <u>underline</u>
+
+6. TOPIC COVERAGE:
+   - Prioritize classification/taxonomy questions
+   - Test specific names, mechanisms, and relationships
+   - Include questions that require understanding, not just recall
+
+7. STRICTLY FORBIDDEN:
+   - True/false questions
+   - "All of the above" or "None of the above" options
+   - Questions about images (no image support in this format)
+   - Duplicate or near-duplicate questions
+
+EXAMPLE:
+Input: "Insulin is a hormone produced by beta cells in the pancreas. It regulates blood glucose levels. Type 1 diabetes results from autoimmune destruction of beta cells."
+
+Output:
+[
+  {
+    "id": 1,
+    "question": "Cell type responsible for insulin production in the pancreas:",
+    "choices": ["Alpha cells", "Beta cells", "Delta cells", "Gamma cells"],
+    "answer": "Beta cells",
+    "extra": "Beta cells in the Islets of Langerhans produce insulin. Alpha cells produce glucagon, delta cells produce somatostatin."
+  }
+]
+
+[PASTE YOUR TEXT HERE]
+```
+
+### Tips for using the prompt
+
+1. Paste the prompt into your LLM (ChatGPT, Claude, Gemini, etc.)
+2. Append your notes or textbook content after `[PASTE YOUR TEXT HERE]`
+3. Copy the JSON output to a `.json` file in the `reviewers/` directory
+4. Run `python builder.py` to generate the `.apkg` file
+5. Import into Anki

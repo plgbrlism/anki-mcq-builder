@@ -1,0 +1,41 @@
+:host {
+  --m3-primary: #7dad99;
+  --m3-on-primary: #001c13;
+  --m3-primary-container: #bbedd7;
+  --m3-on-primary-container: #3f6d5c;
+  --m3-secondary: #93a89d;
+  --m3-on-secondary: #081b14;
+  --m3-secondary-container: #d2e8dc;
+  --m3-on-secondary-container: #556960;
+  --m3-tertiary: #8ba7b7;
+  --m3-on-tertiary: #001a25;
+  --m3-tertiary-container: #cae7f8;
+  --m3-on-tertiary-container: #4d6877;
+  --m3-error: #ff7b6e;
+  --m3-on-error: #390001;
+  --m3-error-container: #ffdad6;
+  --m3-on-error-container: #c32220;
+  --m3-surface: #101412;
+  --m3-on-surface: #dfe4df;
+  --m3-surface-container: #1c211e;
+  --m3-surface-container-low: #181d1a;
+  --m3-surface-container-high: #262b28;
+  --m3-surface-container-highest: #313633;
+  --m3-surface-bright: #353a38;
+  --m3-surface-dim: #0d1210;
+  --m3-on-surface-variant: #c0c8c3;
+  --m3-outline: #8b938e;
+  --m3-outline-variant: #414844;
+  --m3-inverse-surface: #dfe4df;
+  --m3-inverse-on-surface: #2d312f;
+  --m3-inverse-primary: #396756;
+  --m3-background: #101412;
+  --m3-on-background: #dfe4df;
+
+  /* animations */
+  --m3-motion-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  --m3-motion-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --m3-motion-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --m3-duration-short: 150ms;
+  --m3-duration-medium: 300ms;
+}
