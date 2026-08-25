@@ -1,90 +1,30 @@
-/* =========================================================
-   :host RESET — first rule, eradicates all inherited styles
-   ========================================================= */
-:host {
-  all: initial !important;
-  display: block !important;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-               "Google Sans", sans-serif;
-  -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
-  text-rendering: optimizeLegibility !important;
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* =========================================================
-   SCROLLBAR PURGE
-   ========================================================= */
-:host ::-webkit-scrollbar {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-  background: transparent !important;
-}
-:host * {
-  scrollbar-width: none !important;
-  -ms-overflow-style: none !important;
+.card {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Google Sans", sans-serif;
+  background-color: var(--m3-surface);
+  color: var(--m3-on-surface);
+  margin: 0;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
 }
 
-/* =========================================================
-   GESTURE / HIGHLIGHT NEUTRALIZATION
-   ========================================================= */
-:host {
-  overscroll-behavior: none !important;
-}
-:host * {
-  -webkit-tap-highlight-color: transparent !important;
-  -webkit-touch-callout: none !important;
-  -webkit-user-drag: none !important;
-  user-select: none;
-}
-
-/* =========================================================
-   NATIVE WIDGET DEMOLITION
-   ========================================================= */
-:host button,
-:host input,
-:host optgroup,
-:host select,
-:host textarea {
-  -webkit-appearance: none !important;
-  -moz-appearance: none !important;
-  appearance: none !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
-  background-image: none !important;
-  border: none !important;
-  outline: none !important;
-  background: transparent !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  color: inherit !important;
-}
-
-:host button {
-  cursor: pointer;
-}
-
-/* =========================================================
-   LAYOUT
-   ========================================================= */
-:host .m3-mcq-wrapper {
+.m3-mcq-wrapper {
   width: 100%;
   max-width: 580px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin: 0 auto;
-  padding: 16px;
-  min-height: 100vh;
-  box-sizing: border-box;
+  margin: auto 0;
 }
 
-/* =========================================================
-   CHECK BANNER (back side)
-   ========================================================= */
-:host .m3-check-banner {
+/* Check Banner (back side) */
+.m3-check-banner {
   display: none;
   position: sticky;
   top: 0;
@@ -92,50 +32,47 @@
   text-align: center;
   padding: 10px 16px;
   border-radius: 16px 4px 16px 4px;
-  background-clip: padding-box !important;
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
   font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.03em;
   opacity: 0;
   transform: translateY(-8px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-:host .m3-check-banner.visible {
+.m3-check-banner.visible {
   display: block;
-  opacity: 1;
-  transform: translateY(0);
+  animation: m3-banner-in var(--m3-duration-medium) var(--m3-motion-emphasized-decelerate) both;
+  animation-delay: 60ms;
 }
 
-:host .m3-check-banner.correct {
+@keyframes m3-banner-in {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.m3-check-banner.correct {
   background-color: var(--m3-primary-container);
   color: var(--m3-on-primary-container);
-  border: 2px solid var(--m3-primary);
+  border: 3px solid var(--m3-primary);
 }
 
-:host .m3-check-banner.wrong {
+.m3-check-banner.wrong {
   background-color: var(--m3-error-container);
   color: var(--m3-on-error-container);
-  border: 2px solid var(--m3-error);
+  border: 3px solid var(--m3-error);
 }
 
-/* =========================================================
-   QUESTION SECTION
-   ========================================================= */
-:host .m3-question-card {
+/* Question Section */
+.m3-question-card {
   background-color: var(--m3-surface-container-high);
   color: var(--m3-on-surface);
   padding: 24px 20px;
   border-radius: 28px 8px 28px 8px;
-  background-clip: padding-box !important;
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  border: 2px solid var(--m3-outline-variant);
+  border: 3px solid var(--m3-outline-variant);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-:host .m3-badge {
+.m3-badge {
   display: inline-block;
   font-size: 0.75rem;
   font-weight: 700;
@@ -145,196 +82,212 @@
   margin-bottom: 8px;
 }
 
-:host .m3-question-text {
+.m3-question-text {
   font-size: 1.15rem;
   line-height: 1.45;
   font-weight: 500;
   margin: 0;
 }
 
-/* =========================================================
-   OPTIONS CONTAINER
-   ========================================================= */
-:host .m3-options-group {
+/* Options Container */
+.m3-options-group {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-/* =========================================================
-   CHOICE CARD
-   ========================================================= */
-:host .m3-option-item {
+/* Choice Card */
+.m3-option-item {
+  -webkit-appearance: none;
+  appearance: none;
   display: flex;
   align-items: center;
   gap: 14px;
   width: 100%;
+  min-width: 0;
   padding: 16px 20px;
   background-color: var(--m3-surface-container-low);
-  border: 1px solid var(--m3-outline-variant);
+  border:none;
+  box-shadow: inset 0 0 0 3px var(--m3-outline-variant);
   border-radius: 20px 4px 20px 4px;
-  background-clip: padding-box !important;
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
   color: var(--m3-on-surface);
+  font-family: inherit;
   font-size: 1rem;
   font-weight: 400;
   text-align: left;
   cursor: pointer;
   outline: none;
-  transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+  transition: transform var(--m3-duration-short) var(--m3-motion-spring),
+              background-color var(--m3-duration-medium) var(--m3-motion-emphasized),
+              border-color var(--m3-duration-medium) var(--m3-motion-emphasized);
   position: relative;
-  overflow: hidden;
+  isolation: isolate;
 }
 
-/* Leading Indicator Pill (A, B, C, D) */
-:host .m3-option-pill {
+/* Leading Indicator Pill */
+.m3-option-pill {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 32px;
   height: 32px;
   border-radius: 16px 8px 16px 8px;
-  background-clip: padding-box !important;
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
   background-color: var(--m3-surface-container-highest);
   color: var(--m3-on-surface-variant);
   font-size: 0.85rem;
   font-weight: 600;
   flex-shrink: 0;
-  transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+  transition: background-color var(--m3-duration-medium) var(--m3-motion-emphasized),
+              color var(--m3-duration-medium) var(--m3-motion-emphasized);
 }
 
-:host .m3-option-content {
+.m3-option-content {
   flex-grow: 1;
   line-height: 1.4;
 }
 
-/* =========================================================
-   INTERACTIVE STATES
-   ========================================================= */
-:host .m3-option-item:hover {
+/* Interactive States */
+.m3-option-item:hover:not(:disabled):not(.selected) {
   background-color: var(--m3-surface-container-highest);
-  border-color: var(--m3-outline);
+  box-shadow: inset 0 0 0 3px var(--m3-outline);
 }
 
-:host .m3-option-item:focus-visible {
-  border-color: var(--m3-primary);
-  box-shadow: 0 0 0 2px var(--m3-primary);
+.m3-option-item:focus-visible {
+  box-shadow: inset 0 0 0 3px var(--m3-primary), 0 0 0 2px var(--m3-primary);
 }
 
-:host .m3-option-item:not(:disabled):active {
-  transform: scale(0.98) translateZ(0);
+.m3-option-item:not(:disabled):active {
+  transform: scale(0.98);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :host * {
+  * {
     transition: none !important;
+    animation: none !important;
   }
 }
 
-/* =========================================================
-   FRONT SELECTED STATE
-   ========================================================= */
-:host .m3-option-item.selected {
+/* Front selected state */
+.m3-option-item.selected {
   background-color: var(--m3-primary-container);
   color: var(--m3-on-primary-container);
-  border-color: var(--m3-primary);
+  box-shadow: inset 0 0 0 3px var(--m3-primary);
   font-weight: 500;
+  animation: m3-pop var(--m3-duration-medium) var(--m3-motion-spring);
 }
 
-:host .m3-option-item.selected .m3-option-pill {
+@keyframes m3-pop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+.m3-option-item.selected .m3-option-pill {
   background-color: var(--m3-primary);
   color: var(--m3-on-primary);
 }
 
-/* =========================================================
-   BACK TEMPLATE STATES
-   ========================================================= */
-:host .m3-option-item.state-correct {
-  background-color: var(--m3-primary-container) !important;
-  color: var(--m3-on-primary-container) !important;
-  border-color: var(--m3-primary) !important;
+/* Back Template States */
+.m3-option-item.state-correct,
+.m3-option-item.state-missed,
+.m3-option-item.state-wrong {
+  animation: m3-reveal var(--m3-duration-medium) var(--m3-motion-emphasized) both;
+}
+
+@keyframes m3-reveal {
+  from { 
+    background-color: var(--m3-surface-container-low); 
+    border-color: var(--m3-outline-variant); 
+  }
+}
+
+.m3-option-item.state-correct {
+  background-color: var(--m3-primary-container);
+  color: var(--m3-on-primary-container);
+  box-shadow: inset 0 0 0 3px var(--m3-primary);
   font-weight: 600;
 }
 
-:host .m3-option-item.state-correct .m3-option-pill {
-  background-color: var(--m3-primary) !important;
-  color: var(--m3-on-primary) !important;
+.m3-option-item.state-correct .m3-option-pill {
+  background-color: var(--m3-primary);
+  color: var(--m3-on-primary);
 }
 
-:host .m3-option-item.state-wrong {
-  background-color: var(--m3-error-container) !important;
-  color: var(--m3-on-error-container) !important;
-  border-color: var(--m3-error) !important;
+.m3-option-item.state-wrong {
+  background-color: var(--m3-error-container);
+  color: var(--m3-on-error-container);
+  box-shadow: inset 0 0 0 3px var(--m3-error);
 }
 
-:host .m3-option-item.state-wrong .m3-option-pill {
-  background-color: var(--m3-error) !important;
-  color: var(--m3-on-error) !important;
+.m3-option-item.state-wrong .m3-option-pill {
+  background-color: var(--m3-error);
+  color: var(--m3-on-error);
 }
 
-:host .m3-option-item.state-missed {
-  background-color: var(--m3-surface-container) !important;
-  color: var(--m3-on-surface) !important;
-  border-color: var(--m3-tertiary) !important;
+.m3-option-item.state-missed {
+  background-color: var(--m3-tertiary-container);
+  color: var(--m3-on-tertiary-container);
+  box-shadow: inset 0 0 0 3px var(--m3-tertiary);
 }
 
-:host .m3-option-item.state-missed .m3-option-pill {
-  background-color: var(--m3-surface-container) !important;
-  color: var(--m3-on-surface) !important;
+.m3-option-item.state-missed .m3-option-pill {
+  background-color: var(--m3-tertiary);
+  color: var(--m3-on-tertiary);
 }
 
-/* =========================================================
-   EXPLANATION (back side)
-   ========================================================= */
-:host .m3-explanation {
+/* Explanation (back side) */
+.m3-explanation {
   background-color: var(--m3-surface-container-high);
   border-left: 5px solid var(--m3-tertiary);
-  border-radius: 8px 20px 20px 8px;
-  background-clip: padding-box !important;
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
+  border-radius: 20px 8px 20px 8px;
   padding: 18px 20px;
   font-size: 0.95rem;
   line-height: 1.5;
   color: var(--m3-on-surface-variant);
 }
 
-:host .m3-explanation:empty {
+.m3-explanation:empty {
   display: none;
 }
 
-/* =========================================================
-   SHOW ANSWER BUTTON (front side)
-   ========================================================= */
-:host .m3-show-answer {
-  display: none;
-  width: 100%;
-  padding: 14px 20px;
-  background-color: var(--m3-primary);
-  color: var(--m3-on-primary);
-  border-radius: 20px 4px 20px 4px;
-  background-clip: padding-box !important;
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  text-align: center;
+/* For AnkiDroid (Mobile) */
+
+/* Target both Android and iOS devices natively */
+.mobile .m3-mcq-wrapper {
+  /* Reduce the outer gap slightly for smaller screens */
+  gap: 12px;
+  padding: 0 8px;
+}
+
+.mobile .m3-question-card {
+  /* Tighter padding on the question card */
+  padding: 20px 16px;
+}
+
+.mobile .m3-question-text {
+  /* Make the main question slightly larger and highly legible */
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.mobile .m3-option-item {
+  /* Shrink padding to prevent text overflow on narrow devices */
+  padding: 14px 16px;
+  /* Bump option text size up for easier reading on high-DPI screens */
+  font-size: 1.05rem;
+  /* Ensure the touch target is generous for thumbs */
+  min-height: 56px; 
+}
+
+.mobile .m3-option-pill {
+  /* Slightly scale down the indicator pill to give the text more breathing room */
+  width: 28px;
+  height: 28px;
+  font-size: 0.8rem;
+}
+
+.mobile .m3-explanation {
+  /* Adjust explanation text for smaller viewports */
+  padding: 16px;
   font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  cursor: pointer;
-  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
-}
-
-:host .m3-show-answer.visible {
-  display: block;
-}
-
-:host .m3-show-answer:hover {
-  background-color: var(--m3-inverse-primary);
-}
-
-:host .m3-show-answer:active {
-  transform: scale(0.98) translateZ(0);
 }

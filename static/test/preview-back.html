@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCQ back preview</title>
+<link rel="stylesheet" href="../_theme.css">
+<link rel="stylesheet" href="../style.css">
+<style>body { margin: 0; background-color: var(--m3-surface); }</style>
+</head>
+<body>
+<div class="card">
+  <div class="m3-mcq-wrapper">
+    <div class="m3-check-banner" id="m3-check-banner"></div>
+    
+    <div class="m3-question-card">
+      <span class="m3-badge">Question</span>
+      <h2 class="m3-question-text">Which individual is credited with inventing the first machine algorithm in 1843?</h2>
+    </div>
+    
+    <div class="m3-options-group" id="m3-options-back-container"></div>
+    
+    <div class="m3-explanation" id="m3-explanation">Ada Lovelace wrote the first algorithm intended to be processed by a machine, as part of her work on Charles Babbage's Analytical Engine.</div>
+  </div>
+</div>
+
+<div id="raw-choices" style="display:none">Grace Murray Hopper<br>Ada Lovelace<br>Kathleen Booth<br>Niklaus Wirth</div>
+<div id="raw-answer" style="display:none">Ada Lovelace</div>
+
+<script>
+  // Simulate the new JSON state from front
+  window.name = JSON.stringify({
+    perm: [1, 0, 2, 3],
+    selected: "Grace Murray Hopper"
+  });
+</script>
+<script src="../_mcq-back.js"></script>
+<script>initM3Back();</script>
+</body>
+</html>

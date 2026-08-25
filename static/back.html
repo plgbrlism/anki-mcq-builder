@@ -1,17 +1,15 @@
-<div id="app-root"></div>
-<template id="app-template">
-<style>
-/*INJECT_CSS*/
-</style>
 <div class="m3-mcq-wrapper">
   <div class="m3-check-banner" id="m3-check-banner"></div>
+
   <div class="m3-question-card">
     <span class="m3-badge">Question</span>
     <h2 class="m3-question-text">{{Question}}</h2>
   </div>
+
   <div class="m3-options-group" id="m3-options-back-container"></div>
+
   <div class="m3-explanation" id="m3-explanation">{{Extra}}</div>
 </div>
-</template>
+
 <div id="raw-choices" style="display: none;">{{Choices}}</div>
 <div id="raw-answer" style="display: none;">{{Answer}}</div>
