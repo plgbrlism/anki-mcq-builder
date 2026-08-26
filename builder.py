@@ -1,51 +1,69 @@
+from pathlib import Path
 import json
 import hashlib
-from pathlib import Path
 import typer
 from rich.console import Console
 import genanki
+import jsonschema
 
-# Initialize Typer CLI and Rich Console for pretty printing
 app = typer.Typer(
     name="anki-mcq-builder",
-    help="A CLI tool to generate Material 3 Anki MCQ decks from JSON.",
+    help="a cli tool to generate Material 3 Anki MCQ decks from JSON.",
     add_completion=False,
 )
 console = Console()
 
-BASE_DIR = Path(__file__).resolve().parent
-STATIC_DIR = BASE_DIR / "static"
-SCHEMA_VERSION = 5
+SRC_DIR = Path(__file__).resolve().parent
+ASSETS = SRC_DIR / "static"
+TEMPLATE_VERSION = 5
+
+MCQ_SCHEMA = {
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "id": {"type": ["integer", "string"]},
+            "question": {"type": "string"},
+            "choices": {
+                "type": "array",
+                "items": {"type": "string"},
+                "minItems": 2
+            },
+            "answer": {"type": "string"},
+            "extra": {"type": "string"}
+        },
+        "required": ["id", "question", "choices", "answer"]
+    }
+}
 
 def load(name: str) -> str:
-    return (STATIC_DIR / name).read_text(encoding="utf-8")
+    return (ASSETS / name).read_text(encoding="utf-8")
 
 def generate_id(name: str) -> int:
-    """Generates a stable, deterministic Anki ID based on a string."""
+    """Generates a fixed Anki ID based on a string."""
     return int(hashlib.sha256(name.encode('utf-8')).hexdigest()[:8], 16)
 
 @app.command()
 def build(
     json_path: Path = typer.Argument(
-        ..., 
-        help="Path to the JSON file containing questions",
-        exists=True, 
-        file_okay=True, 
-        dir_okay=False, 
+        ...,
+        help="path to the JSON file containing questions",
+        exists=True,
+        file_okay=True,
+        dir_okay=False,
         readable=True
     ),
     deck_name: str = typer.Argument(
-        ..., 
-        help="Name of the Anki deck to create"
+        ...,
+        help="title / name of the Anki deck to create"
     ),
 ):
     """
-    Builds a custom Material 3 .apkg Anki deck from a formatted JSON file.
+    Builds a custom Material Design 3 .apkg Anki deck from a formatted JSON file.
     """
     with console.status(f"[bold cyan]Building deck '{deck_name}'...[/bold cyan]"):
-        
-        # Deterministic IDs
-        MODEL_ID = generate_id(f"Material 3 Expressive MCQ v{SCHEMA_VERSION}")
+
+        MODEL_ID = generate_id(f"Material Design 3  MCQ v{TEMPLATE_VERSION}")
         DECK_ID = generate_id(deck_name)
 
         CSS = load("_theme.css") + "\n" + load("style.css")
@@ -82,7 +100,7 @@ if (window.initM3Back) initM3Back();
 
         mcq_model = genanki.Model(
             MODEL_ID,
-            f"Material 3 Expressive MCQ v{SCHEMA_VERSION}",
+            f"Material Design 3 MCQ v{TEMPLATE_VERSION}",
             fields=[
                 {"name": "Question"},
                 {"name": "Choices"},
@@ -101,7 +119,6 @@ if (window.initM3Back) initM3Back();
 
         deck = genanki.Deck(DECK_ID, deck_name)
 
-        # Load JSON
         with open(json_path, "r", encoding="utf-8") as f:
             try:
                 questions = json.load(f)
@@ -109,7 +126,17 @@ if (window.initM3Back) initM3Back();
                 console.print(f"[bold red]Error parsing JSON:[/bold red] {e}")
                 raise typer.Exit(code=1)
 
-        # Build Notes
+        try:
+            jsonschema.validate(instance=questions, schema=MCQ_SCHEMA)
+        except jsonschema.ValidationError as e:
+            console.print(f"[bold red]Schema Validation Error:[/bold red] {e.message}")
+            raise typer.Exit(code=1)
+
+        for item in questions:
+            if item["answer"] not in item["choices"]:
+                console.print(f"[bold red]Data Error in Question ID {item['id']}:[/bold red] Answer '{item['answer']}' does not exactly match any item in choices.")
+                raise typer.Exit(code=1)
+
         for item in questions:
             stable_guid = genanki.guid_for(deck_name, item["id"])
             note = genanki.Note(
@@ -124,12 +151,11 @@ if (window.initM3Back) initM3Back();
             )
             deck.add_note(note)
 
-        # Export Package
-        output_file = BASE_DIR / f"{json_path.stem}.apkg"
+        output_file = SRC_DIR / f"{json_path.stem}.apkg"
         genanki.Package(deck).write_to_file(output_file)
 
     console.print(f"[bold green]✔ Successfully built[/bold green] [bold yellow]{output_file.name}[/bold yellow]")
-    console.print(f"  • Notes: {len(questions)}\n  • Schema: v{SCHEMA_VERSION}\n  • Deck: '{deck_name}'")
+    console.print(f"  • Notes: {len(questions)}\n  • Template: v{TEMPLATE_VERSION}\n  • Deck: '{deck_name}'")
 
 if __name__ == "__main__":
     app()
