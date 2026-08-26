@@ -30,7 +30,13 @@ MCQ_SCHEMA = {
                 "minItems": 2
             },
             "answer": {"type": "string"},
-            "extra": {"type": "string"}
+            "extra": {"type": "string"},
+            "tags": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            }
         },
         "required": ["id", "question", "choices", "answer"]
     }
@@ -147,6 +153,7 @@ if (window.initM3Back) initM3Back();
                     item["answer"],
                     item.get("extra", ""),
                 ],
+                tags=item.get("tags", []),
                 guid=stable_guid
             )
             deck.add_note(note)
