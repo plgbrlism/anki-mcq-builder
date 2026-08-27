@@ -1,0 +1,14 @@
+# Anki MCQ Builder Configuration
+# Copy to ~/.config/anki-mcq-builder/config.toml or ./anki-mcq-builder.toml
+
+# Where built .apkg files go
+# default: ~/.local/share/AnkiBuilder/decks
+# output_dir = "~/.local/share/AnkiBuilder/decks"
+
+# Auto-open .apkg in Anki after building
+# default: false
+# auto_open = false
+
+# Template version — bump to force Anki to re-import models
+# default: 5
+# template_version = 5
