@@ -85,6 +85,18 @@ def _write_temp_json(data: list) -> Path:
     return p
 
 
+def _resolve_json(path: Path) -> Path:
+    """Resolve name-only input to TEMPLATES_DIR/{name}.json."""
+    if path.is_file():
+        return path
+    if path.suffix == "" or path.suffix == ".json":
+        candidate = TEMPLATES_DIR / (path.stem + ".json")
+        if candidate.is_file():
+            return candidate
+    console.print(f"[bold red]Error:[/bold red] {path} not found.")
+    raise typer.Exit(code=1)
+
+
 @app.command(name="init")
 def init_cmd():
     for d in [TEMPLATES_DIR, OUTPUT_DIR]:
@@ -96,12 +108,15 @@ def init_cmd():
 
 @app.command(name="build")
 def build_cmd(
-    json_path: Path = typer.Argument(..., exists=True, readable=True),
-    deck_name: str = typer.Argument(...),
+    json_path: Path = typer.Argument(...),
+    deck_name: str = typer.Argument(None),
     output_dir: Path = typer.Option(None, "--output-to", "-o"),
     open_file: bool = typer.Option(False, "--open"),
 ):
     _ensure_workspace()
+    json_path = _resolve_json(json_path)
+    if deck_name is None:
+        deck_name = json_path.stem
     with console.status(f"[bold cyan]Building deck '{deck_name}'...[/bold cyan]"):
         try:
             output_file = build_deck(json_path, deck_name, output_dir)
@@ -238,11 +253,14 @@ def dry_run(
 
 @app.command()
 def watch(
-    json_path: Path = typer.Argument(..., exists=True, readable=True),
-    deck_name: str = typer.Argument(...),
+    json_path: Path = typer.Argument(...),
+    deck_name: str = typer.Argument(None),
     output_dir: Path = typer.Option(None, "--output-to", "-o"),
 ):
     _ensure_workspace()
+    json_path = _resolve_json(json_path)
+    if deck_name is None:
+        deck_name = json_path.stem
     console.print(f"[bold cyan]Watching[/bold cyan] {json_path.name}... (Ctrl+C to stop)")
 
     last_mtime = os.path.getmtime(json_path)
