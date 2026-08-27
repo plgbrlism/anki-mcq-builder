@@ -5,6 +5,10 @@ import typer
 from rich.console import Console
 import genanki
 import jsonschema
+import os
+import platform 
+import subprocess
+import shutil
 
 app = typer.Typer(
     name="anki-mcq-builder",
@@ -62,6 +66,16 @@ def build(
     deck_name: str = typer.Argument(
         ...,
         help="title / name of the Anki deck to create"
+    ),
+    output_dir: Path = typer.Option(
+        None,
+        "--output-to", "-o",
+        help="directory / path to save .apkg file"
+    ),
+    open_file: bool = typer.Option(
+        False,
+        "--open",
+        help="open and import the .apkg file after building into Anki"
     ),
 ):
     """
@@ -158,11 +172,46 @@ if (window.initM3Back) initM3Back();
             )
             deck.add_note(note)
 
-        output_file = SRC_DIR / f"{json_path.stem}.apkg"
+        if output_dir:
+            output_dir.mkdir(parents=True, exist_ok=True)
+            output_file = output_dir / f"{deck_name}.apkg"
+        else:
+            output_file = Path.cwd() / f"{deck_name}.apkg"
+            
         genanki.Package(deck).write_to_file(output_file)
 
     console.print(f"[bold green]✔ Successfully built[/bold green] [bold yellow]{output_file.name}[/bold yellow]")
     console.print(f"  • Notes: {len(questions)}\n  • Template: v{TEMPLATE_VERSION}\n  • Deck: '{deck_name}'")
+    console.print(f"  • Saved to: {output_file.absolute()}")
+
+    if open_file:
+        console.print("[bold cyan]Opening .apkg file for import...[/bold cyan]")
+        try:
+            ignore_logs = {"stdout": subprocess.DEVNULL, "stderr": subprocess.DEVNULL}
+            
+            match platform.system():
+                case "Windows":
+                    os.startfile(output_file)
+                
+                case "Darwin":
+                    subprocess.Popen(["open", str(output_file)], **ignore_logs)
+
+                case "Linux" if shutil.which("termux-open"):
+                    subprocess.Popen(["termux-open", str(output_file)], **ignore_logs)
+                    
+                case "Linux":
+                    elif shutil.which("anki"):    
+                        subprocess.Popen(["anki", str(output_file)], **ignore_logs)
+                    if shutil.which("gio"):
+                        subprocess.Popen(["gio", "open", str(output_file)],  **ignore_logs)
+                    else:
+                        subprocess.Popen(["xdg-open", str(output_file)], **ignore_logs)
+                
+                case _:
+                    subprocess.Popen(["xdg-open", str(output_file)], **ignore_logs)
+                    
+        except Exception as e:
+            console.print(f"[bold red]Failed to open:[/bold red] {e}")
 
 if __name__ == "__main__":
     app()

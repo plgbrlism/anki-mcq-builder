@@ -117,6 +117,7 @@ RULES:
    - Provide a brief explanation of why the answer is correct
    - Add relevant context or mnemonic if helpful
    - Use HTML tags for emphasis: <b>bold</b>, <i>italic</i>, <u>underline</u>
+   - If you need to use quotes inside the explanation, strictly use single quotes (' ') to prevent breaking the JSON format.
 
 6. TAGS (Optional but recommended):
    - Generate 2-3 highly relevant tags to categorize the question.

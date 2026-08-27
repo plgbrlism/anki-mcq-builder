@@ -1,0 +1,392 @@
+[
+{
+"id": 1,
+"question": "The media access control (MAC) address of an access point (AP) or base station that has set up a basic service set (BSS) is known by this identifier.",
+"choices": [
+"Basic Service Set Identifier (BSSID)",
+"Service Set Identifier (SSID)",
+"Orthogonal Frequency-division Multiplexing (OFDM)",
+"Direct-sequence Spread Spectrum (DSSS)"
+],
+"answer": "Basic Service Set Identifier (BSSID)",
+"extra": "The BSSID is the MAC address of an AP or base station that has set up a basic service set.",
+"tags": ["WirelessNetworks::Terminologies"]
+},
+{
+"id": 2,
+"question": "This 32-alphanumeric-character unique identifier is assigned to a wireless local area network (WLAN) to act as a wireless network identifier.",
+"choices": [
+"Basic Service Set Identifier (BSSID)",
+"Service Set Identifier (SSID)",
+"Orthogonal Frequency-division Multiplexing (OFDM)",
+"Industrial, Scientific, and Medical (ISM) Band"
+],
+"answer": "Service Set Identifier (SSID)",
+"extra": "Devices connecting to the same WLAN must use the same SSID to establish a connection.",
+"tags": ["WirelessNetworks::Terminologies"]
+},
+{
+"id": 3,
+"question": "This spread spectrum technique transmits radio signals by rapidly switching a carrier among many frequency channels to decrease the efficiency of unauthorized interception.",
+"choices": [
+"Direct-sequence Spread Spectrum (DSSS)",
+"Frequency-hopping Spread Spectrum (FHSS)",
+"Orthogonal Frequency-division Multiplexing (OFDM)",
+"Multiple Input, Multiple Output (MIMO)"
+],
+"answer": "Frequency-hopping Spread Spectrum (FHSS)",
+"extra": "FHSS is also known as frequency-hopping code-division multiple access (FH-CDMA).",
+"tags": ["WirelessNetworks::TransmissionSchemes"]
+},
+{
+"id": 4,
+"question": "The wireless standard that operates in the 5 GHz frequency band and supports bandwidths up to 54 Mbps using orthogonal frequency-division multiplexing (OFDM).",
+"choices": [
+"802.11a",
+"802.11b",
+"802.11g",
+"802.11n"
+],
+"answer": "802.11a",
+"extra": "The 802.11a standard was the first amendment to the original 802.11 standard.",
+"tags": ["WirelessNetworks::Standards"]
+},
+{
+"id": 5,
+"question": "The IEEE standard created in 1999 that operates in the 2.4 GHz ISM band and supports bandwidths up to 11 Mbps using DSSS modulation.",
+"choices": [
+"802.11a",
+"802.11b",
+"802.11e",
+"802.11i"
+],
+"answer": "802.11b",
+"extra": "IEEE extended the 802.11 standard by creating the 802.11b specifications in 1999.",
+"tags": ["WirelessNetworks::Standards"]
+},
+{
+"id": 6,
+"question": "This IEEE standard defines mechanisms to ensure quality of service (QoS) at the MAC layer for real-time applications such as voice, VoIP, and video.",
+"choices": [
+"802.11d",
+"802.11e",
+"802.11i",
+"802.11ac"
+],
+"answer": "802.11e",
+"extra": "802.11e ensures time-sensitive applications have the required network resources.",
+"tags": ["WirelessNetworks::Standards"]
+},
+{
+"id": 7,
+"question": "The wireless specification known as ZigBee handles applications with a low data rate of 250 Kbps to transmit long-distance data through a mesh network while increasing battery life.",
+"choices": [
+"802.15.1",
+"802.15.4",
+"802.15.5",
+"802.11ah"
+],
+"answer": "802.15.4",
+"extra": "The 802.15.4 standard (ZigBee) features a low data rate and reduced complexity.",
+"tags": ["WirelessNetworks::Standards"]
+},
+{
+"id": 8,
+"question": "This advanced wireless encryption protocol uses the Temporal Key Integrity Protocol (TKIP) and Message Integrity Check (MIC) alongside a 48-bit initialization vector.",
+"choices": [
+"Wired Equivalent Privacy (WEP)",
+"Wi-Fi Protected Access (WPA)",
+"Advanced Encryption Standard (AES)",
+"Lightweight EAP (LEAP)"
+],
+"answer": "Wi-Fi Protected Access (WPA)",
+"extra": "WPA also utilizes a 32-bit cyclic redundancy check (CRC) for wireless security.",
+"tags": ["WirelessNetworks::Encryption"]
+},
+{
+"id": 9,
+"question": "The third-generation Wi-Fi security protocol that uses Galois/Counter Mode-256 (GCMP-256) for encryption and HMAC-SHA-384 for authentication.",
+"choices": [
+"WPA",
+"WPA2",
+"WPA2 Enterprise",
+"WPA3"
+],
+"answer": "WPA3",
+"extra": "WPA3 offers improved security over WPA2 across the network by protecting sensitive data using advanced cryptographic tools.",
+"tags": ["WirelessNetworks::Encryption"]
+},
+{
+"id": 10,
+"question": "The encryption protocol used in WPA2 that provides strong encryption and authentication, serving as a replacement for TKIP.",
+"choices": [
+"Temporal Key Integrity Protocol (TKIP)",
+"Counter Mode Cipher Block Chaining Message Authentication Code Protocol (CCMP)",
+"Extensible Authentication Protocol (EAP)",
+"Remote Authentication Dial-In User Service (RADIUS)"
+],
+"answer": "Counter Mode Cipher Block Chaining Message Authentication Code Protocol (CCMP)",
+"extra": "WPA2 relies on AES and CCMP for strong wireless data encryption.",
+"tags": ["WirelessNetworks::Encryption"]
+},
+{
+"id": 11,
+"question": "An unauthorized access point that enables anyone with an 802.11-equipped device to connect to a corporate network, potentially providing an attacker with network access.",
+"choices": [
+"Software AP (SAP)",
+"Hardware AP (HAP)",
+"Rogue AP",
+"Honeypot AP"
+],
+"answer": "Rogue AP",
+"extra": "Rogue APs can bypass standard corporate network authentication protocols.",
+"tags": ["WirelessSecurity::Attacks"]
+},
+{
+"id": 12,
+"question": "An unauthorized wireless network set up by an attacker using a rogue AP with high-power antennas and the same SSID as the target network to steal sensitive user information.",
+"choices": [
+"Misconfigured AP",
+"Honeypot AP",
+"Ad-Hoc Connection",
+"Client Mis-Association"
+],
+"answer": "Honeypot AP",
+"extra": "Victims connecting to a Honeypot AP may inadvertently reveal their identity, username, and password.",
+"tags": ["WirelessSecurity::Attacks"]
+},
+{
+"id": 13,
+"question": "This attack exploits flaws in the implementation of the four-way handshake process in the WPA2 authentication protocol, which is typically used to generate a fresh encryption key.",
+"choices": [
+"Key Reinstallation Attack (KRACK)",
+"AP MAC Spoofing",
+"Jamming Signal Attack",
+"Man-in-the-Middle Attack"
+],
+"answer": "Key Reinstallation Attack (KRACK)",
+"extra": "KRACK targets the WPA2 four-way handshake that establishes connections between a device and an AP.",
+"tags": ["WirelessSecurity::Attacks"]
+},
+{
+"id": 14,
+"question": "An exploitation technique where specialized hardware generates signals that appear as noise to wireless devices, forcing them to hold transmissions and causing a Denial of Service.",
+"choices": [
+"Jamming Signal Attack",
+"Unauthorized Association",
+"Bluesmacking",
+"Bluejacking"
+],
+"answer": "Jamming Signal Attack",
+"extra": "Spectrum jamming attacks usually block all communications by overwhelming the network with malicious traffic.",
+"tags": ["WirelessSecurity::Attacks"]
+},
+{
+"id": 15,
+"question": "The tool within the Aircrack-ng suite used specifically to switch wireless interfaces from the managed mode to the monitor mode and vice versa.",
+"choices": [
+"Airodump-ng",
+"Airmon-ng",
+"Aireplay-ng",
+"Airbase-ng"
+],
+"answer": "Airmon-ng",
+"extra": "Airmon-ng enables the wireless card to monitor traffic by changing its mode.",
+"tags": ["WirelessSecurity::Tools"]
+},
+{
+"id": 16,
+"question": "The program in the Aircrack-ng suite utilized to capture packets of raw 802.11 frames and collect WEP Initialization Vectors (IVs).",
+"choices": [
+"Airodump-ng",
+"Aircrack-ng",
+"Airdecap-ng",
+"Airolib-ng"
+],
+"answer": "Airodump-ng",
+"extra": "Airodump-ng focuses on raw packet capture and IV collection for subsequent cracking.",
+"tags": ["WirelessSecurity::Tools"]
+},
+{
+"id": 17,
+"question": "The network software suite tool designed for traffic generation, fake authentication, packet replay, and Address Resolution Protocol (ARP) request injection.",
+"choices": [
+"Airserv-ng",
+"Airtun-ng",
+"Aireplay-ng",
+"Airgraph-ng"
+],
+"answer": "Aireplay-ng",
+"extra": "Aireplay-ng generates the necessary traffic to speed up the key cracking process.",
+"tags": ["WirelessSecurity::Tools"]
+},
+{
+"id": 18,
+"question": "The Bluetooth mode where devices filter out non-matched Inquiry Access Codes (IACs) and are discoverable only for a specific event, temporary condition, or limited period.",
+"choices": [
+"Discoverable mode",
+"Limited discoverable mode",
+"Non-discoverable mode",
+"Pairable mode"
+],
+"answer": "Limited discoverable mode",
+"extra": "There is no Host Controller Interface (HCI) command to set a device directly in limited discoverable mode.",
+"tags": ["BluetoothSecurity::Modes"]
+},
+{
+"id": 19,
+"question": "A Bluetooth attack that occurs when an attacker sends an oversized ping packet to a victim's device, resulting in a buffer overflow.",
+"choices": [
+"Bluesmacking",
+"Bluejacking",
+"Bluesnarfing",
+"Bluebugging"
+],
+"answer": "Bluesmacking",
+"extra": "Bluesmacking is conceptually similar to an Internet Control Message Protocol (ICMP) ping-of-death attack.",
+"tags": ["BluetoothSecurity::Attacks"]
+},
+{
+"id": 20,
+"question": "The practice of using Bluetooth to send unsolicited messages or advertisements to users without the recipient's consent by configuring a user-defined device name.",
+"choices": [
+"Bluebugging",
+"BlueSniff",
+"Bluejacking",
+"Bluesnarfing"
+],
+"answer": "Bluejacking",
+"extra": "While strictly not damaging to the receiving device, Bluejacking can be highly disruptive to the victim.",
+"tags": ["BluetoothSecurity::Attacks"]
+},
+{
+"id": 21,
+"question": "A method of gaining access to sensitive data on a Bluetooth-enabled device by exploiting a vulnerability in the Object Exchange (OBEX) protocol to perform GET operations.",
+"choices": [
+"Bluesnarfing",
+"BluePrinting",
+"Btlejacking",
+"KNOB attack"
+],
+"answer": "Bluesnarfing",
+"extra": "Attackers can perform a GET operation for files like /pb.vcf for the phonebook or telecom/cal.vcs for the calendar.",
+"tags": ["BluetoothSecurity::Attacks"]
+},
+{
+"id": 22,
+"question": "An attack where an adversary gains remote access to a target Bluetooth-enabled device without the victim's awareness to intercept phone calls and forward messages.",
+"choices": [
+"Bluebugging",
+"Bluesmacking",
+"BlueSniff",
+"MAC spoofing attack"
+],
+"answer": "Bluebugging",
+"extra": "In a Bluebugging attack, the attacker maliciously sniffs sensitive information and controls device functions remotely.",
+"tags": ["BluetoothSecurity::Attacks"]
+},
+{
+"id": 23,
+"question": "This attack enables an adversary to eavesdrop on all shared network data by targeting the short-distance communication protocols of Bluetooth that negotiate encryption keys.",
+"choices": [
+"Btlejacking",
+"Key Negotiation of Bluetooth (KNOB) attack",
+"Man-in-the-Middle attack",
+"BluePrinting"
+],
+"answer": "Key Negotiation of Bluetooth (KNOB) attack",
+"extra": "A KNOB attack allows an MITM attack on paired devices without being traced.",
+"tags": ["BluetoothSecurity::Attacks"]
+},
+{
+"id": 24,
+"question": "A footprinting technique utilized by an attacker to collect information and determine the make and model of a target Bluetooth-enabled device to identify exploitable vulnerabilities.",
+"choices": [
+"BlueSniff",
+"BluePrinting",
+"Bluesnarfing",
+"Bluebugging"
+],
+"answer": "BluePrinting",
+"extra": "Attackers use BluePrinting to create infographics of the model and manufacturer for vulnerability analysis.",
+"tags": ["BluetoothSecurity::Attacks"]
+},
+{
+"id": 25,
+"question": "The built-in Wireless Intrusion Prevention System (WIPS) by Aruba Networks designed to protect against rogue access points, man-in-the-middle attacks, and unauthorized Wi-Fi devices.",
+"choices": [
+"Cisco Adaptive Wireless IPS",
+"RFProtect",
+"WatchGuard WIPS",
+"Extreme AirDefense"
+],
+"answer": "RFProtect",
+"extra": "RFProtect is a dedicated WIPS solution provided by Aruba Networks for enhanced wireless security.",
+"tags": ["WirelessSecurity::Tools"]
+},
+{
+"id": 26,
+"question": "A Wi-Fi planning tool that enables network engineers to design optimal wireless coverage, predict signal strength, and plan access point placement prior to deployment.",
+"choices": [
+"AirMagnet WiFi Analyzer PRO",
+"AirMagnet Planner",
+"WatchGuard WIPS",
+"Cisco Adaptive Wireless IPS"
+],
+"answer": "AirMagnet Planner",
+"extra": "AirMagnet Planner acts as a proactive tool before actual physical network implementation.",
+"tags": ["WirelessSecurity::Tools"]
+},
+{
+"id": 27,
+"question": "The recommended enterprise authentication standard intended to provide an advanced line of defense over WPA or WEP by requiring 802.1x authentication.",
+"choices": [
+"WPA2-Enterprise",
+"Lightweight EAP (LEAP)",
+"Extensible Authentication Protocol (EAP)",
+"Wi-Fi Protected Access (WPA)"
+],
+"answer": "WPA2-Enterprise",
+"extra": "Implementing WPA2-Enterprise with 802.1x authentication is a noted best practice for wireless network security.",
+"tags": ["WirelessSecurity::BestPractices"]
+},
+{
+"id": 28,
+"question": "This IEEE amendment specifies security mechanisms for 802.11 wireless networks and improves WLAN security by implementing protocols such as TKIP and AES.",
+"choices": [
+"802.11e",
+"802.11i",
+"802.11n",
+"802.11ac"
+],
+"answer": "802.11i",
+"extra": "The 802.11i standard brought significant security upgrades to Wi-Fi networks.",
+"tags": ["WirelessNetworks::Standards"]
+},
+{
+"id": 29,
+"question": "A recommended configuration best practice applied to prevent certain default wireless messages from broadcasting a network's identity to everyone in the vicinity.",
+"choices": [
+"Use SSID cloaking",
+"Enable MAC address filtering",
+"Set the router access password",
+"Implement WPA2-Enterprise"
+],
+"answer": "Use SSID cloaking",
+"extra": "SSID cloaking hides the network name from standard public broadcasts, requiring users to manually input the SSID to connect.",
+"tags": ["WirelessSecurity::BestPractices"]
+},
+{
+"id": 30,
+"question": "A major threat to wireless networks that involves either an accidental connection to a neighboring organization's overlapping network or a malicious connection facilitated by soft APs.",
+"choices": [
+"Client Mis-Association",
+"Ad-Hoc Connection Attack",
+"Unauthorized Association",
+"AP MAC Spoofing"
+],
+"answer": "Unauthorized Association",
+"extra": "In a malicious unauthorized association, the attacker activates a soft AP on an infected machine to bypass standard entry points.",
+"tags": ["WirelessSecurity::Attacks"]
+}
+]

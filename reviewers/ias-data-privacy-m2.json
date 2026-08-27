@@ -1,0 +1,392 @@
+[
+{
+"id": 1,
+"question": "An attack method where emails or pop-ups redirect users to fake web pages that mimic trustworthy sites to collect personal information.",
+"choices": [
+"Phishing",
+"Framing",
+"Clickjacking",
+"Buffer Overflow"
+],
+"answer": "Phishing",
+"extra": "Mobile users are highly susceptible to phishing because small screens display only short URLs and limited warning messages.",
+"tags": ["MobileSecurity::DeviceAttacks"]
+},
+{
+"id": 2,
+"question": "This technique involves integrating a malicious web page into another web page using the iFrame elements of HTML to steal sensitive information.",
+"choices": [
+"Framing",
+"Phishing",
+"Data Caching",
+"SMiShing"
+],
+"answer": "Framing",
+"extra": "An attacker exploits the iFrame functionality used in a target website and uses clickjacking to steal the user's sensitive information.",
+"tags": ["MobileSecurity::DeviceAttacks"]
+},
+{
+"id": 3,
+"question": "A malicious technique, also known as a user interface redress attack, used to trick web users into clicking something different from what they perceive.",
+"choices": [
+"Clickjacking",
+"Buffer Overflow",
+"Man-in-the-Mobile",
+"Dynamic Runtime Injection"
+],
+"answer": "Clickjacking",
+"extra": "Clickjacking tricks victims into unintended interactions on a web page.",
+"tags": ["MobileSecurity::DeviceAttacks"]
+},
+{
+"id": 4,
+"question": "An attack where malicious code is implanted into a victim's mobile device to bypass password verification systems that send one-time passwords (OTPs) via SMS or voice calls.",
+"choices": [
+"Man-in-the-Mobile",
+"SMiShing",
+"Baseband Attack",
+"Dynamic Runtime Injection"
+],
+"answer": "Man-in-the-Mobile",
+"extra": "After bypassing the verification system, the malware relays the gathered information back to the attacker.",
+"tags": ["MobileSecurity::DeviceAttacks"]
+},
+{
+"id": 5,
+"question": "An abnormality that occurs when a program writes data beyond the intended limit, overwriting adjacent memory and causing memory access errors or device crashes.",
+"choices": [
+"Buffer Overflow",
+"Data Caching",
+"OS Command Execution",
+"Privilege Escalation"
+],
+"answer": "Buffer Overflow",
+"extra": "Buffer overflows result in erratic program behavior and compromised device stability.",
+"tags": ["MobileSecurity::DeviceAttacks"]
+},
+{
+"id": 6,
+"question": "Attackers exploit vulnerabilities in this mobile component, which is responsible for sending and receiving radio signals to cell towers.",
+"choices": [
+"GSM/3GPP baseband processor",
+"Wi-Fi network interface",
+"Bluetooth Host Controller",
+"GPS module"
+],
+"answer": "GSM/3GPP baseband processor",
+"extra": "Baseband attacks target the phone's GSM/3GPP processor to manipulate its communication with cell towers.",
+"tags": ["MobileSecurity::PhoneAttacks"]
+},
+{
+"id": 7,
+"question": "A fraud technique where an attacker sends text messages containing deceptive links to malicious websites or telephone numbers to steal personal information.",
+"choices": [
+"SMiShing",
+"Phishing",
+"Framing",
+"Man-in-the-Mobile"
+],
+"answer": "SMiShing",
+"extra": "The attacker tricks the victim into clicking a link or calling a phone number to reveal personal information via SMS.",
+"tags": ["MobileSecurity::PhoneAttacks"]
+},
+{
+"id": 8,
+"question": "An attack that exploits external configuration files and libraries to gain unauthorized access to administration interfaces and clear-text configuration data.",
+"choices": [
+"Configuration Manipulation",
+"Dynamic Runtime Injection",
+"Escalated Privileges",
+"Unintended Permissions"
+],
+"answer": "Configuration Manipulation",
+"extra": "Apps may use external configuration files that attackers can manipulate to access restricted administration interfaces.",
+"tags": ["MobileSecurity::ApplicationAttacks"]
+},
+{
+"id": 9,
+"question": "The process of removing the security mechanisms set by Apple to prevent malicious code from running on the device, providing root access to the OS.",
+"choices": [
+"iOS Jailbreaking",
+"Android Rooting",
+"OS Data Caching",
+"Carrier-loaded Software Modification"
+],
+"answer": "iOS Jailbreaking",
+"extra": "Jailbreaking removes sandbox restrictions, leading to security risks like malware infection and poor performance.",
+"tags": ["MobileSecurity::SystemAttacks"]
+},
+{
+"id": 10,
+"question": "This procedure allows users to attain privileged control within the subsystem of an open-source mobile OS, which can result in the exposure of sensitive data.",
+"choices": [
+"Android Rooting",
+"iOS Jailbreaking",
+"Dynamic Runtime Injection",
+"Baseband Manipulation"
+],
+"answer": "Android Rooting",
+"extra": "Rooting grants users root access within Android's subsystem, bypassing standard security protections.",
+"tags": ["MobileSecurity::SystemAttacks"]
+},
+{
+"id": 11,
+"question": "An illicit wireless access point installed by physical means that allows attackers to hijack connections of legitimate network users and access a protected network.",
+"choices": [
+"Rogue Access Points",
+"Fake SSL Certificates",
+"Man-in-the-Middle (MITM)",
+"Packet Sniffing"
+],
+"answer": "Rogue Access Points",
+"extra": "Attackers bypass network security perimeters by physically installing these illicit access points.",
+"tags": ["MobileSecurity::NetworkAttacks"]
+},
+{
+"id": 12,
+"question": "A type of MITM attack that invisibly downgrades connections from HTTPS to HTTP without encryption by exploiting vulnerabilities in the SSL/TLS implementation on websites.",
+"choices": [
+"SSLStrip",
+"DNS Poisoning",
+"Session Hijacking",
+"Fake SSL Certificates"
+],
+"answer": "SSLStrip",
+"extra": "SSLStrip makes it difficult for mobile browser users to detect that their secure connection has been downgraded.",
+"tags": ["MobileSecurity::NetworkAttacks"]
+},
+{
+"id": 13,
+"question": "An attack that exploits vulnerabilities in dynamically generated web pages to inject malicious client-side code such as JavaScript or Flash into legitimate websites.",
+"choices": [
+"Cross-site Scripting (XSS)",
+"Cross-Site Request Forgery (CSRF)",
+"SQL Injection",
+"Brute-Force Attacks"
+],
+"answer": "Cross-site Scripting (XSS)",
+"extra": "Attackers inject ActiveX, HTML, or VBScript through XSS to compromise website users.",
+"tags": ["MobileSecurity::WebAttacks"]
+},
+{
+"id": 14,
+"question": "A technique that tricks an authenticated user's browser into sending unauthorized requests to a trusted site to compromise session integrity.",
+"choices": [
+"Cross-Site Request Forgery (CSRF)",
+"Cross-site Scripting (XSS)",
+"Session Hijacking",
+"DNS Poisoning"
+],
+"answer": "Cross-Site Request Forgery (CSRF)",
+"extra": "CSRF forces the user's browser to execute unwanted actions on a trusted site while authenticated.",
+"tags": ["MobileSecurity::WebAttacks"]
+},
+{
+"id": 15,
+"question": "An attack where non-validated input is used to inject database commands through a web application to grant unauthorized access or retrieve information directly.",
+"choices": [
+"SQL Injection",
+"OS Command Execution",
+"Data Dumping",
+"Privilege Escalation"
+],
+"answer": "SQL Injection",
+"extra": "SQL Injection executes unauthorized commands on the backend database.",
+"tags": ["MobileSecurity::DatabaseAttacks"]
+},
+{
+"id": 16,
+"question": "The OWASP mobile risk category that covers the misuse of a platform feature or the failure to use platform security controls like Touch ID or Keychain.",
+"choices": [
+"M1 - Improper Platform Usage",
+"M2 - Insecure Data Storage",
+"M3 - Insecure Communication",
+"M4 - Insecure Authentication"
+],
+"answer": "M1 - Improper Platform Usage",
+"extra": "M1 addresses vulnerabilities related to Android intents, platform permissions, and built-in security features.",
+"tags": ["OWASP::MobileRisks"]
+},
+{
+"id": 17,
+"question": "This vulnerability arises when development teams incorrectly assume that users and malware will not have access to a mobile device's file system and sensitive information.",
+"choices": [
+"M2 - Insecure Data Storage",
+"M5 - Insufficient Cryptography",
+"M7 - Client Code Quality",
+"M10 - Extraneous Functionality"
+],
+"answer": "M2 - Insecure Data Storage",
+"extra": "Jailbreaking or rooting can easily bypass encryption mechanisms designed to protect local data stores.",
+"tags": ["OWASP::MobileRisks"]
+},
+{
+"id": 18,
+"question": "The OWASP mobile risk that covers poor handshaking, incorrect SSL versions, and cleartext communication of sensitive assets that could lead to account theft.",
+"choices": [
+"M3 - Insecure Communication",
+"M4 - Insecure Authentication",
+"M6 - Insecure Authorization",
+"M8 - Code Tampering"
+],
+"answer": "M3 - Insecure Communication",
+"extra": "A poor SSL setup under M3 can also facilitate phishing and MITM attacks.",
+"tags": ["OWASP::MobileRisks"]
+},
+{
+"id": 19,
+"question": "The mobile risk category that captures failures to identify the user when required or weaknesses in maintaining session management.",
+"choices": [
+"M4 - Insecure Authentication",
+"M6 - Insecure Authorization",
+"M2 - Insecure Data Storage",
+"M5 - Insufficient Cryptography"
+],
+"answer": "M4 - Insecure Authentication",
+"extra": "Authentication failures happen when apps fail to accurately verify a user's identity during a session.",
+"tags": ["OWASP::MobileRisks"]
+},
+{
+"id": 20,
+"question": "The category that involves failures in authorization decisions on the client side and forced browsing, distinct from user identification issues.",
+"choices": [
+"M6 - Insecure Authorization",
+"M4 - Insecure Authentication",
+"M7 - Client Code Quality",
+"M1 - Improper Platform Usage"
+],
+"answer": "M6 - Insecure Authorization",
+"extra": "Insecure authorization occurs when access controls are poorly enforced after authentication.",
+"tags": ["OWASP::MobileRisks"]
+},
+{
+"id": 21,
+"question": "The catch-all OWASP category for code-level implementation problems in the mobile client, such as buffer overflows and format string vulnerabilities.",
+"choices": [
+"M7 - Client Code Quality",
+"M8 - Code Tampering",
+"M9 - Reverse Engineering",
+"M10 - Extraneous Functionality"
+],
+"answer": "M7 - Client Code Quality",
+"extra": "Most exploitations in M7 result in foreign code execution or Denial of Service on remote server endpoints.",
+"tags": ["OWASP::MobileRisks"]
+},
+{
+"id": 22,
+"question": "This vulnerability category covers binary patching, local resource modification, and dynamic memory modification executed by an attacker directly on the device.",
+"choices": [
+"M8 - Code Tampering",
+"M9 - Reverse Engineering",
+"M7 - Client Code Quality",
+"M1 - Improper Platform Usage"
+],
+"answer": "M8 - Code Tampering",
+"extra": "An attacker directly subverts the intended use of the software by modifying its memory or resources.",
+"tags": ["OWASP::MobileRisks"]
+},
+{
+"id": 23,
+"question": "The analysis of the final core binary using tools like IDA Pro or Hopper to uncover source code, cryptographic constants, and intellectual property.",
+"choices": [
+"M9 - Reverse Engineering",
+"M8 - Code Tampering",
+"M10 - Extraneous Functionality",
+"M7 - Client Code Quality"
+],
+"answer": "M9 - Reverse Engineering",
+"extra": "Reverse engineering helps attackers exploit other nascent vulnerabilities by understanding the app's inner workings.",
+"tags": ["OWASP::MobileRisks"]
+},
+{
+"id": 24,
+"question": "The inclusion of hidden backdoor functionality or internal development security controls, such as disabling two-factor authentication during testing, that are released into a production environment.",
+"choices": [
+"M10 - Extraneous Functionality",
+"M9 - Reverse Engineering",
+"M8 - Code Tampering",
+"M7 - Client Code Quality"
+],
+"answer": "M10 - Extraneous Functionality",
+"extra": "Attackers exploit extraneous functionality to discover hidden flaws in backend systems without involving end users.",
+"tags": ["OWASP::MobileRisks"]
+},
+{
+"id": 25,
+"question": "A recommended security practice for mobile devices regarding the use of wireless connections like Wi-Fi and Bluetooth when not actively required.",
+"choices": [
+"Disable them to avoid illegal wireless access",
+"Keep them on for constant syncing",
+"Connect them simultaneously for better speed",
+"Set them to open mode"
+],
+"answer": "Disable them to avoid illegal wireless access",
+"extra": "Users should disable wireless access such as Wi-Fi and Bluetooth if not in use, to avoid illegal wireless access to the device.",
+"tags": ["MobileSecurity::Guidelines"]
+},
+{
+"id": 26,
+"question": "A recommended strategy to thwart passcode guessing on mobile devices.",
+"choices": [
+"Set erase data to ON",
+"Use a four-digit numeric PIN",
+"Disable auto-lock features",
+"Remove idle timeouts"
+],
+"answer": "Set erase data to ON",
+"extra": "Setting 'erase data to ON' protects the device by deleting data after a certain number of failed attempts.",
+"tags": ["MobileSecurity::Guidelines"]
+},
+{
+"id": 27,
+"question": "The Apple iOS remote wipe service recommended to locate, secure, or erase a lost or stolen mobile device.",
+"choices": [
+"Find My iPhone",
+"Find My Device",
+"Mobile Device Management",
+"iCloud Sync"
+],
+"answer": "Find My iPhone",
+"extra": "Find My iPhone or FindMyPhone are remote wipe services specifically used for Apple iOS devices.",
+"tags": ["MobileSecurity::Guidelines"]
+},
+{
+"id": 28,
+"question": "An antimalware mobile tool that blocks adware and malware, conducts privacy audits for all apps, and ensures safer browsing on Android devices.",
+"choices": [
+"Malwarebytes Security",
+"Lookout Personal",
+"Zimperium's zIPS",
+"BullGuard Mobile Security"
+],
+"answer": "Malwarebytes Security",
+"extra": "Malwarebytes provides robust protection against ransomware and growing threats on Android platforms.",
+"tags": ["MobileSecurity::Tools"]
+},
+{
+"id": 29,
+"question": "An enterprise-grade mobile threat defense solution designed to detect and prevent advanced mobile attacks in real time.",
+"choices": [
+"Zimperium's zIPS",
+"Norton Security for iOS",
+"Lookout Personal",
+"Comodo Mobile Security"
+],
+"answer": "Zimperium's zIPS",
+"extra": "Zimperium's zIPS focuses on enterprise-level mobile defense and advanced threat prevention.",
+"tags": ["MobileSecurity::Tools"]
+},
+{
+"id": 30,
+"question": "A mobile security app that offers protection against malware, phishing, and device theft, and includes backup and system monitoring features.",
+"choices": [
+"Lookout Personal",
+"Malwarebytes Security",
+"BullGuard Mobile Security",
+"Norton Security for iOS"
+],
+"answer": "Lookout Personal",
+"extra": "Lookout Personal integrates backup features alongside standard malware and phishing protection.",
+"tags": ["MobileSecurity::Tools"]
+}
+]

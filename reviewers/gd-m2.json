@@ -1,0 +1,242 @@
+[
+{
+"id": 1,
+"question": "Game development category focused on allowing players to take part in creating experiences through role-play, physical movement, and problem-solving to relieve boredom:",
+"choices": ["Entertainment", "Health and Fitness", "Educational", "Consciousness and Change"],
+"answer": "Entertainment",
+"extra": "Many games were developed purely to entertain the players, and some games are designed to involve players in in-game actions such as role-play, physical movement, and problem-solving.",
+"tags": ["GameDesign::Goals", "Goals::Entertainment"]
+},
+{
+"id": 2,
+"question": "Category of games where players are motivated to interact with opponents or team members, ranging from simple two-person arcade games to massively multiplayer online games:",
+"choices": ["Social", "Aesthetics and Creativity", "Marketing and Advertising", "Recruitment and Training"],
+"answer": "Social",
+"extra": "When more than one person is playing a game, the players might be motivated to interact socially with their opponents or team members.",
+"tags": ["GameDesign::Goals", "Goals::Social"]
+},
+{
+"id": 3,
+"question": "Feature of educational games where topics such as geography, math, and reading are accessed within the game itself:",
+"choices": ["In-game knowledge acquisition", "Process simulation management", "Reflexive skill building", "Aesthetic appreciation"],
+"answer": "In-game knowledge acquisition",
+"extra": "Educational games feature in-game knowledge acquisition, where knowledge of certain topics is taught or accessed within the game itself.",
+"tags": ["GameDesign::Goals", "Goals::Educational"]
+},
+{
+"id": 4,
+"question": "Type of game used by institutions like NASA and the Air Force to train astronauts and pilots to adjust to atmospheric changes:",
+"choices": ["Simulation games", "Action-Adventure games", "Exergames", "Advergames"],
+"answer": "Simulation games",
+"extra": "Simulation games, which replicate real-world processes and environments, have been used by government and military institutions for training purposes.",
+"tags": ["GameDesign::Goals", "Goals::Training"]
+},
+{
+"id": 5,
+"question": "Primary reason corporations have developed training games for their employees:",
+"choices": ["To build leadership and management skills", "To assess physical fitness and health", "To test programming and coding logic", "To improve aesthetic appreciation"],
+"answer": "To build leadership and management skills",
+"extra": "Corporations have also developed games to help build their employees' leadership and management skills.",
+"tags": ["GameDesign::Goals", "Goals::Training"]
+},
+{
+"id": 6,
+"question": "Subcategory of health and fitness games specifically related to physical fitness, exemplified by commercial products like EA Sports Active and Wii Fit:",
+"choices": ["Exergames", "Advergames", "Participatory sims", "Platformers"],
+"answer": "Exergames",
+"extra": "Many exergames are commercial products such as EA Sports Active and Wii Fit, and even some music and rhythm games.",
+"tags": ["GameDesign::Goals", "Goals::HealthAndFitness"]
+},
+{
+"id": 7,
+"question": "Purpose of medical games like Re-Mission when played by children with cancer:",
+"choices": ["Giving them a sense of power and control over their disease", "Teaching them the chemical structure of medicines", "Connecting them with multiplayer support groups", "Distracting them with non-medical puzzles"],
+"answer": "Giving them a sense of power and control over their disease",
+"extra": "Medical games include Re-Mission, which gives children with cancer a sense of power and control over their disease by battling cancer cells.",
+"tags": ["GameDesign::Goals", "Goals::HealthAndFitness"]
+},
+{
+"id": 8,
+"question": "Games created by non-profit, political, or religious groups to raise awareness of beliefs, poverty, or climate change:",
+"choices": ["Games for change", "Process simulations", "Social networking games", "Massively multiplayer online games"],
+"answer": "Games for change",
+"extra": "Games created for social consciousness and change (sometimes termed 'games for change') are created to raise awareness of certain beliefs, attitudes, and causes.",
+"tags": ["GameDesign::Goals", "Goals::Consciousness"]
+},
+{
+"id": 9,
+"question": "Category of games developed to elicit creative expression, allowing players to make their own music and comics:",
+"choices": ["Aesthetics and Creativity", "Social Interaction", "Marketing and Advertising", "Action-Adventure"],
+"answer": "Aesthetics and Creativity",
+"extra": "Some games are created to elicit creative expression or aesthetic appreciation from players, such as WarioWare D.I.Y..",
+"tags": ["GameDesign::Goals", "Goals::Aesthetics"]
+},
+{
+"id": 10,
+"question": "Games designed specifically as advertising tools and used as an alternative to web-based banners:",
+"choices": ["Advergames", "Exergames", "Toy games", "CMS games"],
+"answer": "Advergames",
+"extra": "Advergames are specifically designed as advertising tools and used as an alternative to other web-based advertising.",
+"tags": ["GameDesign::Goals", "Goals::Marketing"]
+},
+{
+"id": 11,
+"question": "Online form of marketing where brand-showcasing sites contain games and discussion forums to become a fun hangout for customers:",
+"choices": ["Advertainment", "Advergames", "Social networking", "Massively multiplayer online role-playing"],
+"answer": "Advertainment",
+"extra": "Advertainment is a form of marketing in which sites developed to showcase a brand contain games and discussion forums.",
+"tags": ["GameDesign::Goals", "Goals::Marketing"]
+},
+{
+"id": 12,
+"question": "Categories based on a combination of subject matter, setting, screen presentation, player perspective, and game-playing strategies:",
+"choices": ["Genres", "Platforms", "Time Intervals", "Player Modes"],
+"answer": "Genres",
+"extra": "Genres are categories based on a combination of subject matter, setting, screen presentation/format, player perspective, and game-playing strategies.",
+"tags": ["GameDesign::Genres", "Genres::Definition"]
+},
+{
+"id": 13,
+"question": "Motivation for people playing action games that involves quick reflexes and snap judgments:",
+"choices": ["The adrenaline rush", "The complex puzzle solving", "The deep storytelling", "The aesthetic appreciation"],
+"answer": "The adrenaline rush",
+"extra": "People are motivated to play action games for the adrenaline rush involving quick reflexes and snap judgments.",
+"tags": ["GameDesign::Genres", "Genres::Action"]
+},
+{
+"id": 14,
+"question": "Primary reason simplicity is strictly necessary for action game design:",
+"choices": ["The average brain cannot process much additional information in a fast-paced environment", "The console hardware cannot render complex environments quickly", "Players prefer games without any storyline", "Reflexive actions strictly require two-dimensional settings"],
+"answer": "The average brain cannot process much additional information in a fast-paced environment",
+"extra": "Simplicity is necessary for action games because the average brain cannot process much additional information in a fast-paced environment.",
+"tags": ["GameDesign::Genres", "Genres::Action"]
+},
+{
+"id": 15,
+"question": "Action sub-genre focusing on players moving quickly through an environment by jumping, dodging obstacles, and collecting items:",
+"choices": ["Platformer", "Fighting", "Racing", "First-person shooter"],
+"answer": "Platformer",
+"extra": "The platformer action sub-genre focuses on players moving quickly through an environment, often jumping and dodging to avoid obstacles.",
+"tags": ["GameDesign::Genres", "Genres::Action"]
+},
+{
+"id": 16,
+"question": "Shooter game perspective where the player is limited to straight-ahead vision and cannot see their own character onscreen:",
+"choices": ["First-person shooters", "Third-person shooters", "Platformers", "Real-time strategy"],
+"answer": "First-person shooters",
+"extra": "In first-person shooters (FPSs), the player has a first-person perspective and cannot see his or her character onscreen.",
+"tags": ["GameDesign::Genres", "Genres::Shooter"]
+},
+{
+"id": 17,
+"question": "Distinct advantage of third-person shooters over first-person shooters:",
+"choices": ["The player has a much wider perspective", "The player experiences a higher adrenaline rush", "The player does not have to manage resources", "The player is completely hidden from enemies"],
+"answer": "The player has a much wider perspective",
+"extra": "An advantage of third-person shooters is that the player has a much wider perspective than in an FPS.",
+"tags": ["GameDesign::Genres", "Genres::Shooter"]
+},
+{
+"id": 18,
+"question": "Action sub-genre where the standard scenario involves making a vehicle move as quickly as possible without losing control:",
+"choices": ["Racing", "Platformer", "Vehicle simulation", "Fighting"],
+"answer": "Racing",
+"extra": "The racing action sub-genre standard scenario involves the player attempting to make the vehicle move as quickly as possible without losing control of it.",
+"tags": ["GameDesign::Genres", "Genres::Racing"]
+},
+{
+"id": 19,
+"question": "Average length of a session in fighting games, which are often viewed from a side perspective:",
+"choices": ["90 seconds", "30 seconds", "5 minutes", "15 minutes"],
+"answer": "90 seconds",
+"extra": "Fighting games are often viewed from a side perspective, and each session lasts only an average of 90 seconds.",
+"tags": ["GameDesign::Genres", "Genres::Fighting"]
+},
+{
+"id": 20,
+"question": "Genre usually designed as turn-based, focusing on unraveling stories, decoding messages, and solving puzzles:",
+"choices": ["Adventure", "Role-Playing", "Action", "Strategy"],
+"answer": "Adventure",
+"extra": "Adventure games are all about unraveling stories, exploring worlds, and solving puzzles, and are usually turn-based.",
+"tags": ["GameDesign::Genres", "Genres::Adventure"]
+},
+{
+"id": 21,
+"question": "The only hybrid genre that has successfully distinguished itself as an accepted genre in game development:",
+"choices": ["Action-Adventure", "Puzzle-Strategy", "Role-Playing Simulation", "Fighting-Platformer"],
+"answer": "Action-Adventure",
+"extra": "The action-adventure genre is the only hybrid genre that has distinguished itself as an accepted genre.",
+"tags": ["GameDesign::Genres", "Genres::ActionAdventure"]
+},
+{
+"id": 22,
+"question": "Game genre closely tied to the addiction motivation, often run by online gambling sites:",
+"choices": ["Casino", "Strategy", "Massively Multiplayer Online", "Process Simulations"],
+"answer": "Casino",
+"extra": "The addiction motivation is closely tied to gambling, and many online versions of the casino genre are run by online gambling sites.",
+"tags": ["GameDesign::Genres", "Genres::Casino"]
+},
+{
+"id": 23,
+"question": "Distinguishing characteristic of a pure puzzle game:",
+"choices": ["It focuses on solving puzzles without controlling a character", "It requires navigating expansive 3D environments", "It demands complex micromanagement of resources", "It involves vicarious participation in sports"],
+"answer": "It focuses on solving puzzles without controlling a character",
+"extra": "A pure puzzle game focuses on the player solving a puzzle or series of puzzles without controlling a character, and has little or no story.",
+"tags": ["GameDesign::Genres", "Genres::Puzzle"]
+},
+{
+"id": 24,
+"question": "Genre characterized by strong storylines and player-characters that gain strength, experience, and money through combat to buy new equipment:",
+"choices": ["Role-Playing Games", "Adventure Games", "Action Games", "Strategy Games"],
+"answer": "Role-Playing Games",
+"extra": "RPGs contain strong storylines and player-characters that improve throughout the course of the game, often advancing through combat.",
+"tags": ["GameDesign::Genres", "Genres::RPG"]
+},
+{
+"id": 25,
+"question": "Game category attempting to replicate systems, machines, and experiences using real-world rules:",
+"choices": ["Simulations", "Strategy", "Role-Playing Games", "Advergames"],
+"answer": "Simulations",
+"extra": "Simulations attempt to replicate systems, machines, and experiences using real-world rules.",
+"tags": ["GameDesign::Genres", "Genres::Simulations"]
+},
+{
+"id": 26,
+"question": "Psychological experience provided by sports and participatory simulations allowing players to become extraordinary athletes:",
+"choices": ["Wish fulfillment", "Aesthetic appreciation", "Consciousness change", "Reflexive processing"],
+"answer": "Wish fulfillment",
+"extra": "Participating in their favorite sport allows players to experience 'wish fulfillment'—to become extraordinary athletes.",
+"tags": ["GameDesign::Genres", "Genres::Simulations"]
+},
+{
+"id": 27,
+"question": "Simulations where the goal is constructive building rather than defeating an opponent, also known as toy games:",
+"choices": ["Process Simulations", "Vehicle Simulations", "Participatory Simulations", "Real-Time Strategy"],
+"answer": "Process Simulations",
+"extra": "Process simulations involve real-world systems or processes, and the goal is to build something within a process rather than defeating an enemy.",
+"tags": ["GameDesign::Genres", "Genres::Simulations"]
+},
+{
+"id": 28,
+"question": "Game genre rooted in classic board games like chess, requiring the management of a limited set of resources to achieve a goal:",
+"choices": ["Strategy", "Puzzle", "Role-Playing Games", "Adventure"],
+"answer": "Strategy",
+"extra": "Strategy games have their origin in classic board games such as chess, where players manage a limited set of resources to achieve a particular goal.",
+"tags": ["GameDesign::Genres", "Genres::Strategy"]
+},
+{
+"id": 29,
+"question": "Common issue in Real-Time Strategy (RTS) games defined as the process of rapidly balancing sets of resources containing several features:",
+"choices": ["Micromanagement", "Turn-based pacing", "Wish fulfillment", "In-game knowledge acquisition"],
+"answer": "Micromanagement",
+"extra": "A common issue in RTS games is micromanagement—the process of rapidly balancing sets of resources containing several features under constant time pressure.",
+"tags": ["GameDesign::Genres", "Genres::Strategy"]
+},
+{
+"id": 30,
+"question": "A serious threat to enjoyment in Massively Multiplayer Online (MMO) games involving players who harass, cheat, or commit fraud:",
+"choices": ["Player misbehavior", "Micromanagement", "Excessive simplicity", "Non-standard hardware setups"],
+"answer": "Player misbehavior",
+"extra": "One common issue in MMO is the player's misbehavior, which provides a more serious threat to others' enjoyment of the game.",
+"tags": ["GameDesign::Genres", "Genres::MMO"]
+}
+]
