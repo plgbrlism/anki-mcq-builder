@@ -1,2 +1,3 @@
 "*.apkg"
 wiki/
+__pycache__/

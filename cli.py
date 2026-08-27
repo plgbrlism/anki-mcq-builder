@@ -85,7 +85,6 @@ def _write_temp_json(data: list) -> Path:
     return p
 
 
-# ── build (passthrough) ──────────────────────────────────────────────
 @app.command(name="build", hidden=True)
 def build_cmd(
     json_path: Path = typer.Argument(..., exists=True, readable=True),
@@ -110,7 +109,6 @@ def build_cmd(
         open_in_anki(output_file)
 
 
-# ── validate ──────────────────────────────────────────────────────────
 @app.command()
 def validate(
     json_path: Path = typer.Argument(None, exists=True, readable=True),
@@ -132,7 +130,6 @@ def validate(
         console.print(f"  • Tags: {tag_str}")
 
 
-# ── preview ───────────────────────────────────────────────────────────
 @app.command()
 def preview(
     json_path: Path = typer.Argument(None, exists=True, readable=True),
@@ -209,7 +206,6 @@ def preview(
     console.print("  [dim](Close browser tabs, temp files auto-cleaned on reboot)[/dim]")
 
 
-# ── dry-run ───────────────────────────────────────────────────────────
 @app.command()
 def dry_run(
     json_path: Path = typer.Argument(None, exists=True, readable=True),
@@ -231,7 +227,6 @@ def dry_run(
     ))
 
 
-# ── watch ─────────────────────────────────────────────────────────────
 @app.command()
 def watch(
     json_path: Path = typer.Argument(..., exists=True, readable=True),
@@ -261,7 +256,6 @@ def watch(
         console.print("\n[dim]Stopped watching.[/dim]")
 
 
-# ── list ──────────────────────────────────────────────────────────────
 @app.command(name="list")
 def list_decks():
     _ensure_workspace()
@@ -303,7 +297,6 @@ def list_decks():
     console.print(table)
 
 
-# ── inspect ───────────────────────────────────────────────────────────
 @app.command()
 def inspect(
     json_path: Path = typer.Argument(None, exists=True, readable=True),
@@ -337,7 +330,6 @@ def inspect(
         console.print(tag_table)
 
 
-# ── completions ───────────────────────────────────────────────────────
 @app.command()
 def completions(
     shell: str = typer.Argument(..., help="shell: bash, zsh, or fish"),
