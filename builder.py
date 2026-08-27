@@ -18,6 +18,19 @@ app = typer.Typer(
 console = Console()
 
 SRC_DIR = Path(__file__).resolve().parent
+
+current_os = platform.system()
+if current_os == "Windows":
+    base_dir = Path(os.getenv("LOCALAPPDATA", Path.home() / "AppData" / "Local"))
+elif current_os == "Darwin":
+    base_dir = Path.home() / "Library" / "Application Support"
+else:
+    base_dir = Path(os.getenv("XDG_DATA_HOME", Path.home() / ".local" / "share"))
+    
+WORKSPACE_DIR = base_dir / "AnkiBuilder"
+TEMPLATES_DIR = WORKSPACE_DIR / "templates"
+OUTPUT_DIR = WORKSPACE_DIR / "decks"
+
 ASSETS = SRC_DIR / "static"
 TEMPLATE_VERSION = 5
 
@@ -53,6 +66,19 @@ def generate_id(name: str) -> int:
     """Generates a fixed Anki ID based on a string."""
     return int(hashlib.sha256(name.encode('utf-8')).hexdigest()[:8], 16)
 
+def init(value: bool):
+    """
+    Initializes the AnkiBuilder workspace directories on your system.
+    """
+    if value:
+        for directory in [TEMPLATES_DIR, OUTPUT_DIR]:
+            directory.mkdir(parents=True, exist_ok=True)
+            
+        console.print("[bold green]✔ Workspace initialized successfully![/bold green]")
+        console.print(f"  • [cyan]Templates (Put JSON here):[/cyan] {TEMPLATES_DIR}")
+        console.print(f"  • [cyan]Decks (Output goes here):[/cyan] {OUTPUT_DIR}")
+        raise typer.Exit()
+    
 @app.command()
 def build(
     json_path: Path = typer.Argument(
@@ -67,6 +93,13 @@ def build(
         ...,
         help="title / name of the Anki deck to create"
     ),
+    init: bool = typer.Option(
+        False,
+        "--init",
+        help="initialize the AnkiBuilder workspace directories",
+        callback=init,
+        is_eager=True,
+    ),
     output_dir: Path = typer.Option(
         None,
         "--output-to", "-o",
@@ -75,9 +108,14 @@ def build(
     open_file: bool = typer.Option(
         False,
         "--open",
-        help="open and import the .apkg file after building into Anki"
+        help="open and import the .apkg file directly into Anki"
     ),
 ):
+    if not WORKSPACE_DIR.exists():
+        console.print("[bold yellow]⚠ Workspace not found![/bold yellow]")
+        console.print("Please run [bold cyan]anki-mcq-builder init[/bold cyan] first to set up your directories.")
+        raise typer.Exit(code=1)
+        
     """
     Builds a custom Material Design 3 .apkg Anki deck from a formatted JSON file.
     """
@@ -176,7 +214,7 @@ if (window.initM3Back) initM3Back();
             output_dir.mkdir(parents=True, exist_ok=True)
             output_file = output_dir / f"{deck_name}.apkg"
         else:
-            output_file = Path.cwd() / f"{deck_name}.apkg"
+            output_file = OUTPUT_DIR / f"{deck_name}.apkg"
             
         genanki.Package(deck).write_to_file(output_file)
 
@@ -200,9 +238,9 @@ if (window.initM3Back) initM3Back();
                     subprocess.Popen(["termux-open", str(output_file)], **ignore_logs)
                     
                 case "Linux":
-                    elif shutil.which("anki"):    
+                    if shutil.which("anki"):    
                         subprocess.Popen(["anki", str(output_file)], **ignore_logs)
-                    if shutil.which("gio"):
+                    elif shutil.which("gio"):
                         subprocess.Popen(["gio", "open", str(output_file)],  **ignore_logs)
                     else:
                         subprocess.Popen(["xdg-open", str(output_file)], **ignore_logs)
