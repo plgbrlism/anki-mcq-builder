@@ -133,6 +133,69 @@ def build_cmd(
         open_in_anki(output_file)
 
 
+@app.command(name="batch")
+def batch_cmd(
+    source: Path = typer.Argument(None),
+    output_dir: Path = typer.Option(None, "--output-to", "-o"),
+    open_file: bool = typer.Option(False, "--open"),
+):
+    # ponytail: flat output with parent-prefix, mirror dir structure if nesting needed
+    _ensure_workspace()
+    source = source or TEMPLATES_DIR
+    if not source.is_dir():
+        console.print(f"[bold red]Error:[/bold red] {source} is not a directory.")
+        raise typer.Exit(code=1)
+
+    json_files = sorted(source.rglob("*.json"))
+    if not json_files:
+        console.print("[yellow]No JSON files found.[/yellow]")
+        raise typer.Exit()
+
+    built = []
+    errors = []
+    seen_names = {}  # track output stems for collision detection
+
+    for jf in json_files:
+        try:
+            deck_name = jf.stem
+            # auto-prefix with parent dir on collision
+            if deck_name in seen_names:
+                parent = jf.parent.name
+                deck_name = f"{parent}--{deck_name}"
+                # second collision: skip
+                if deck_name in seen_names:
+                    console.print(f"[bold red]Collision:[/bold red] {jf} — skipped.")
+                    errors.append(jf)
+                    continue
+            seen_names[deck_name] = jf
+
+            output_file = build_deck(jf, deck_name, output_dir)
+            questions = validate_json(jf)
+            built.append((jf, output_file, len(questions)))
+        except Exception as e:
+            console.print(f"[bold red]Error:[/bold red] {jf.name}: {e}")
+            errors.append(jf)
+
+    # summary
+    console.print()
+    if built:
+        table = Table(title=f"Built {len(built)}/{len(json_files)}")
+        table.add_column("Source", style="bold")
+        table.add_column("Notes", justify="right")
+        table.add_column("Output")
+        for src, out, count in built:
+            table.add_row(src.name, str(count), out.name)
+        console.print(table)
+
+    if errors:
+        console.print(f"[bold red]Errors:[/bold red] {len(errors)} file(s) failed.")
+        for e in errors:
+            console.print(f"  • {e.name}")
+
+    if open_file and built:
+        open_in_anki(built[0][1])
+
+
 @app.command()
 def validate(
     json_path: Path = typer.Argument(None, exists=True, readable=True),

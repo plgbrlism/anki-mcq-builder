@@ -7,6 +7,8 @@
 	</br>
 </div>
 
+![Showcase](assets/showcase.gif)
+
 ## Install
 
 ```bash
@@ -35,8 +37,18 @@ Requires Python 3.11+.
 
 ```bash
 anki-mcq-builder init
-anki-mcq-builder build questions.json "My Deck"
-anki-mcq-builder build questions.json "My Deck" --open  # import into Anki directly
+
+# Build from name only (finds biology.json in templates/ automatically)
+anki-mcq-builder build biology
+
+# Build with explicit deck name
+anki-mcq-builder build biology.json "Biology 101"
+
+# Build all JSON files in templates/ recursively
+anki-mcq-builder batch
+
+# Build and open in Anki
+anki-mcq-builder build biology --open
 ```
 
 ## Commands
@@ -44,11 +56,12 @@ anki-mcq-builder build questions.json "My Deck" --open  # import into Anki direc
 | Command | What it does |
 | --- | --- |
 | `init` | Set up workspace folders |
-| `build <json> <name>` | Build an `.apkg` deck from JSON |
+| `build <json\|name> [name]` | Build an `.apkg` deck from JSON. Name is optional — derives from filename when omitted |
+| `batch [dir]` | Build all `.json` files recursively from a directory (default: `templates/`) |
 | `validate <json>` | Check JSON for errors without building |
 | `preview <json>` | Open first question in browser to preview card design |
 | `dry-run <json> <name>` | Show what would be built (note count, output path) |
-| `watch <json> <name>` | Rebuild automatically when JSON changes |
+| `watch <json> [name]` | Rebuild automatically when JSON changes |
 | `list` | List all decks in workspace with sizes |
 | `inspect <json>` | Show question stats, tag distribution, choice counts |
 | `completions <shell>` | Generate shell completions (bash/zsh/fish) |
@@ -59,6 +72,13 @@ anki-mcq-builder build questions.json "My Deck" --open  # import into Anki direc
 | --- | --- |
 | `--open` | Open the `.apkg` in Anki after building |
 | `-o <dir>` | Save to a custom directory |
+
+### Batch flags
+
+| Flag | What it does |
+| --- | --- |
+| `--open` | Open the first built `.apkg` in Anki |
+| `-o <dir>` | Save all decks to a custom directory |
 
 ### Stdin support
 
