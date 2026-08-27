@@ -85,7 +85,16 @@ def _write_temp_json(data: list) -> Path:
     return p
 
 
-@app.command(name="build", hidden=True)
+@app.command(name="init")
+def init_cmd():
+    for d in [TEMPLATES_DIR, OUTPUT_DIR]:
+        d.mkdir(parents=True, exist_ok=True)
+    console.print("[bold green]✔ Workspace initialized![/bold green]")
+    console.print(f"  • [cyan]Templates:[/cyan] {TEMPLATES_DIR}")
+    console.print(f"  • [cyan]Decks:[/cyan] {OUTPUT_DIR}")
+
+
+@app.command(name="build")
 def build_cmd(
     json_path: Path = typer.Argument(..., exists=True, readable=True),
     deck_name: str = typer.Argument(...),

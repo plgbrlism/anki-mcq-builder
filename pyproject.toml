@@ -3,7 +3,7 @@ name = "anki-mcq-builder"
 version = "1.0.0"
 description = "CLI tool to generate Material 3 Anki MCQ decks from JSON."
 requires-python = ">=3.11"
-license = {text = "MIT"}
+license = "MIT"
 dependencies = [
     "genanki",
     "typer[all]",
@@ -16,6 +16,9 @@ dev = ["pytest"]
 [project.scripts]
 anki-mcq-builder = "cli:app"
 
+[tool.setuptools]
+py-modules = ["cli", "core"]
+
 [build-system]
 requires = ["setuptools>=68.0"]
-build-backend = "setuptools.backends._legacy:_Backend"
+build-backend = "setuptools.build_meta"
