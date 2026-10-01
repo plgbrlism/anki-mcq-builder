@@ -2,6 +2,7 @@
 import sys
 import os
 import json
+import re
 import tempfile
 import time
 from pathlib import Path
@@ -37,13 +38,18 @@ def _ensure_workspace():
 
 def _read_json(path: Path = None) -> list:
     if path:
-        with open(path, "r", encoding="utf-8") as f:
-            return json.load(f)
-    if not sys.stdin.isatty():
-        return json.load(sys.stdin)
-    console.print("[bold red]Error:[/bold red] No input file and no piped data.")
-    raise typer.Exit(code=2)
+        text = path.read_text(encoding="utf-8")
+    elif not sys.stdin.isatty():
+        text = sys.stdin.read()
+    else:
+        console.print("[bold red]Error:[/bold red] No input file and no piped data.")
+        raise typer.Exit(code=2)
 
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        sanitized = re.sub(r'\\(?![\\"/bfnrtu])', r'\\\\', text)
+        return json.loads(sanitized)
 
 def _load_config() -> dict:
     defaults = {
@@ -70,14 +76,15 @@ def _load_config() -> dict:
 
 def _parse_questions(path: Path = None) -> list:
     data = _read_json(path)
+    temp_path = _write_temp_json(data)
     try:
-        return validate_json(
-            path if path else _write_temp_json(data)
-        )
+        return validate_json(temp_path)
     except Exception as e:
         console.print(f"[bold red]Validation error:[/bold red] {e}")
         raise typer.Exit(code=1)
-
+    finally:
+        if temp_path.exists():
+            temp_path.unlink()
 
 def _write_temp_json(data: list) -> Path:
     p = Path(tempfile.mktemp(suffix=".json"))
