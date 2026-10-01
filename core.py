@@ -5,6 +5,8 @@ import os
 import platform
 import subprocess
 import shutil
+import re
+import html
 
 import genanki
 import jsonschema
@@ -126,8 +128,12 @@ def make_deck(deck_name: str) -> genanki.Deck:
 
 
 def validate_json(path: Path) -> list:
-    with open(path, "r", encoding="utf-8") as f:
-        questions = json.load(f)
+    text = Path(path).read_text(encoding="utf-8")
+    try:
+        questions = json.loads(text)
+    except json.JSONDecodeError:
+        sanitized = re.sub(r'\\(?![\\"/bfnrtu])', r'\\\\', text)
+        questions = json.loads(sanitized)
 
     jsonschema.validate(instance=questions, schema=MCQ_SCHEMA)
 
@@ -140,7 +146,6 @@ def validate_json(path: Path) -> list:
 
     return questions
 
-
 def build_deck(json_path: Path, deck_name: str, output_dir: Path = None) -> Path:
     questions = validate_json(json_path)
     model = make_model()
@@ -148,13 +153,14 @@ def build_deck(json_path: Path, deck_name: str, output_dir: Path = None) -> Path
 
     for item in questions:
         stable_guid = genanki.guid_for(deck_name, item["id"])
+        escaped_choices = [html.escape(c) for c in item["choices"]]
         note = genanki.Note(
             model=model,
             fields=[
-                item["question"],
-                "<br>".join(item["choices"]),
-                item["answer"],
-                item.get("extra", ""),
+                html.escape(item["question"]),
+                "<br>".join(escaped_choices),
+                html.escape(item["answer"]),
+                html.escape(item.get("extra", "")),
             ],
             tags=item.get("tags", []),
             guid=stable_guid,
